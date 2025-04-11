@@ -39,6 +39,17 @@ app.post('/coins', async (req, res) => {
     }
   });
    
+app.delete('/coins/:id',async (req,res) => {
+    try {
+        const result = Coins.findByIdAndDelete(req.params.id)
+
+        if(!result) return res.status(500).send('something went wrong');
+
+        res.json(result)
+    }catch(error){
+        res.status(500).send(err.message)
+    }
+})
  
 app.put('/coins/:id', async (req, res) => {
   try {
