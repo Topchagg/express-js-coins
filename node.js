@@ -26,7 +26,7 @@ app.post('/coins', async (req, res) => {
 
     try {
     
-      const coin = new Coins(...req.body);
+      const coin = new Coins({...req.body});
   
       await coin.save();
   
