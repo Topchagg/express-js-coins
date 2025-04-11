@@ -14,9 +14,9 @@ mongoose.connect('mongodb+srv://root:root@cluster0.ssf6ede.mongodb.net/', {
 
 app.get('/coins/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) return res.status(404).send('User not found');
-    res.json(user);
+    const coins = await Coins.findById(req.params.id);
+    if (!coins) return res.status(404).send('coins not found');
+    res.json(coins);
   } catch (err) {
     console.log(err)
   }
@@ -30,7 +30,7 @@ app.post('/coins', async (req, res) => {
   
       await coin.save();
   
-      res.status(201).json(Coins);
+      res.status(201).json(coin);
   
     } catch (err) {
   
